@@ -1,0 +1,124 @@
+<html>
+	<head>
+		<title>BIG3</title>
+		<link href="BIG3.css" type="text/css" rel="stylesheet">
+		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+	</head>
+<body ng-app="myApp">
+		<h1>BIG3</h1>
+		
+	<div ng-controller="buttons">
+		<h3>{{xrecords}} Records | {{xchallenges}} Challenges Completed</h3>
+		<p>{{xsets}} Sets | {{xreps}} Reps | {{xweight}} Pounds | {{xgains}} Gains</p>
+		<h2>Level {{xlevel}}: {{xcurrent}} / {{xtotal}} Gains</h2>
+		<hr>
+	
+		<input type="button" ng-class="{'btn-warning': benchButton}" ng-click="changeBench()" onclick="refreshBench()" value="Bench">
+		<input type="button" ng-class="{'btn-warning': squatButton}" ng-click="changeSquat()" onclick="refreshSquat()" value="Squat">
+		<input type="button" ng-class="{'btn-warning': deadButton}" ng-click="changeDead()" onclick="refreshDead()" value="Deadlift">
+
+		<hr>
+
+		<div>
+			<h2>Enter Set</h2>
+			<p>Weight: <input id="weight" type="text" value="100" ng-model="weight">{{weight}}</p>
+			<p>Reps: <input id="reps" type="text" value="10" ng-model="reps">{{reps}}</p>
+			<input type="button" onclick="addSet();addRecord();addChallenges();addStats();" ng-click="refresh();changeTotals();" value="Add">
+			<p id="response"></p>
+			<p id="response2"></p>
+			<p id="response3"></p>
+			<p id="response4"></p>
+		</div>
+		<hr>
+		
+		<div>
+			<h2>History</h2>
+			<p>{{history}}</p>
+		</div>
+		<hr>
+
+		<div>
+			<h2>Stacks</h2>
+			<table>
+				<tr>
+					<th>Reps</th>
+					<th>Weight</th>
+					<th>Records</th>
+				</tr>
+				<tr ng-repeat="x in stack">
+					<td>{{$index + 1}}</td>
+					<td>{{x.weight}}</td>
+					<td>{{x.records}}</td>
+				</tr>
+			</table>
+		</div>
+		<hr>
+		<div>
+			<h2>Pumps</h2>
+			<table>
+				<tr>
+					<th>Weight</th>
+					<th>Reps</th>
+					<th>Records</th>
+				</tr>
+				<tr ng-repeat="x in pump">
+					<td>{{x.weight}}</td>
+					<td>{{x.reps}}</td>
+					<td>{{x.records}}</td>
+				</tr>
+			</table>
+		</div>
+		<hr>
+		<div>
+			<h2>Challenges</h2>
+			<table>
+				<tr>
+					<th>Challenge</th>
+					<th>Status</th>
+				</tr>
+				<tr ng-repeat="x in challenge">
+					<td>{{x.title}}</td>
+					<td>{{x.challenge}}</td>
+				</tr>
+			</table>
+		</div>
+		<div>
+			<h2>Stats</h2>
+			<table>
+				<tr>
+					<th>Gains</th>
+					<td>{{sgains}}</td>	
+				</tr>
+				<tr>
+					<th>Records</th>
+					<td>{{srecords}}</td>	
+				</tr>
+				<tr>
+					<th>Challenges</th>
+					<td>{{schallenges}}</td>
+				</tr>
+				<tr>
+					<th>Sets</th>
+					<td>{{ssets}}</td>
+				</tr>
+				<tr>
+					<th>Reps</th>
+					<td>{{sreps}}</td>
+				</tr>
+				<tr>
+					<th>Weight</th>
+					<td>{{sweight}} pounds</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+<script src="variables.js"></script>
+<script src="sets.js"></script>
+<script src="refresh.js"></script>
+<script src="records.js"></script>
+<script src="challenges.js"></script>
+<script src="stats.js"></script>
+<script src="buttons.js"></script>
+</body>
+</html>
+
