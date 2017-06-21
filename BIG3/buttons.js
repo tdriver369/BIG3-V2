@@ -38,7 +38,7 @@ app.controller('buttons', function($scope) {
 		$scope.sweight = stats[1].weight;
 		$scope.sgains = stats[1].gains;
 		$scope.schallenges = stats[1].challenges;
-		$scope.history = benchHist.join(' ');
+		$scope.history = benchHist;
 	}
 	$scope.changeSquat = function(){
 		$scope.squatButton = true;
