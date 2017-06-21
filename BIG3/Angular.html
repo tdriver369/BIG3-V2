@@ -31,85 +31,118 @@
 		</div>
 		<hr>
 		
-		<div>
-			<h2>History</h2>
-			<p>{{history}}</p>
-		</div>
-		<hr>
+		<div class="tabs">
 
-		<div>
-			<h2>Stacks</h2>
-			<table>
-				<tr>
-					<th>Reps</th>
-					<th>Weight</th>
-					<th>Records</th>
-				</tr>
-				<tr ng-repeat="x in stack">
-					<td>{{$index + 1}}</td>
-					<td>{{x.weight}}</td>
-					<td>{{x.records}}</td>
-				</tr>
-			</table>
-		</div>
-		<hr>
-		<div>
-			<h2>Pumps</h2>
-			<table>
-				<tr>
-					<th>Weight</th>
-					<th>Reps</th>
-					<th>Records</th>
-				</tr>
-				<tr ng-repeat="x in pump">
-					<td>{{x.weight}}</td>
-					<td>{{x.reps}}</td>
-					<td>{{x.records}}</td>
-				</tr>
-			</table>
-		</div>
-		<hr>
-		<div>
-			<h2>Challenges</h2>
-			<table>
-				<tr>
-					<th>Challenge</th>
-					<th>Status</th>
-				</tr>
-				<tr ng-repeat="x in challenge">
-					<td>{{x.title}}</td>
-					<td>{{x.challenge}}</td>
-				</tr>
-			</table>
-		</div>
-		<div>
-			<h2>Stats</h2>
-			<table>
-				<tr>
-					<th>Gains</th>
-					<td>{{sgains}}</td>	
-				</tr>
-				<tr>
-					<th>Records</th>
-					<td>{{srecords}}</td>	
-				</tr>
-				<tr>
-					<th>Challenges</th>
-					<td>{{schallenges}}</td>
-				</tr>
-				<tr>
-					<th>Sets</th>
-					<td>{{ssets}}</td>
-				</tr>
-				<tr>
-					<th>Reps</th>
-					<td>{{sreps}}</td>
-				</tr>
-				<tr>
-					<th>Weight</th>
-					<td>{{sweight}} pounds</td>
-				</tr>
-			</table>
+			<div class="tab">
+			    <input class="tab-radio" type="radio" id="tab-1" name="tab-group-1" checked>
+			    <label class="tab-label" for="tab-1">History</label>
+
+			    <div class="tab-panel">
+					<div class="tab-content">
+						<p>{{history}}</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="tab">
+			    <input class="tab-radio" type="radio" id="tab-2" name="tab-group-1">
+			    <label class="tab-label" for="tab-2">Stacks</label>
+
+			    <div class="tab-panel">
+					<div class="tab-content">
+						<table>
+							<tr>
+								<th>Reps</th>
+								<th>Weight</th>
+								<th>Records</th>
+							</tr>
+							<tr ng-repeat="x in stack">
+								<td>{{$index + 1}}</td>
+								<td>{{x.weight}}</td>
+								<td>{{x.records}}</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+
+			<div class="tab">
+			    <input class="tab-radio" type="radio" id="tab-3" name="tab-group-1">
+			    <label class="tab-label" for="tab-3">Pumps</label>
+
+			    <div class="tab-panel">
+					<div class="tab-content">
+						<table>
+							<tr>
+								<th>Weight</th>
+								<th>Reps</th>
+								<th>Records</th>
+							</tr>
+							<tr ng-repeat="x in pump">
+								<td>{{x.weight}}</td>
+								<td>{{x.reps}}</td>
+								<td>{{x.records}}</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+
+			<div class="tab">
+			    <input class="tab-radio" type="radio" id="tab-4" name="tab-group-1">
+			    <label class="tab-label" for="tab-4">Challenges</label>
+
+			    <div class="tab-panel">
+					<div class="tab-content">
+						<table>
+							<tr>
+								<th>Challenge</th>
+								<th>Status</th>
+							</tr>
+							<tr ng-repeat="x in challenge">
+								<td>{{x.title}}</td>
+								<td>{{x.challenge}}</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+
+			<div class="tab">
+			    <input class="tab-radio" type="radio" id="tab-5" name="tab-group-1">
+			    <label class="tab-label" for="tab-5">Stats</label>
+
+			    <div class="tab-panel">
+					<div class="tab-content">
+						<table>
+							<tr>
+								<th>Gains</th>
+								<td>{{sgains}}</td>	
+							</tr>
+							<tr>
+								<th>Records</th>
+								<td>{{srecords}}</td>	
+							</tr>
+							<tr>
+								<th>Challenges</th>
+								<td>{{schallenges}}</td>
+							</tr>
+							<tr>
+								<th>Sets</th>
+								<td>{{ssets}}</td>
+							</tr>
+							<tr>
+								<th>Reps</th>
+								<td>{{sreps}}</td>
+							</tr>
+							<tr>
+								<th>Weight</th>
+								<td>{{sweight}} pounds</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 <script src="variables.js"></script>
