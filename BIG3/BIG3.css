@@ -109,3 +109,15 @@
 	background-color: silver;
 }
 
+#myProgress {
+  width: 100%;
+  background-color: #ddd;
+  border: 1px solid black;
+}
+
+#myBar {
+  height: 30px;
+  background-color: Crimson;
+  border: 1px solid black;
+}
+

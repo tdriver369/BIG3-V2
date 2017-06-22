@@ -38,6 +38,17 @@ function addStats() {
 			levelInfo[level].current = current;
 		}
 
+		var elem = document.getElementById("myBar");
+		var width = levelInfo[level].current / levelInfo[level].gains;
+		var id = setInterval(frame, 10);
+	    function frame() {
+	        if (width >= 100) {
+	            clearInterval(id);
+	        } else {
+	            elem.style.width = width + '%'; 
+	        }
+	    }
+
 		localStorage.setItem("newStats", JSON.stringify(stats));
 		localStorage.setItem("level", JSON.stringify(level));
 		localStorage.setItem("levelInfo", JSON.stringify(levelInfo));

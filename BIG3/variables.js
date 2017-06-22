@@ -169,3 +169,4 @@ var levelInfo = JSON.parse(localStorage.getItem("levelInfo")) || [
 	{name: 20, gains: 2000000, total: 5000000, current: 0},];
 
 var level = JSON.parse(localStorage.getItem("level")) || 0;
+

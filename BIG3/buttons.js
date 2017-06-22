@@ -13,6 +13,8 @@ app.controller('buttons', function($scope) {
 		$scope.xlevel = levelInfo[level].name;
 		$scope.xcurrent = levelInfo[level].current;
 		$scope.xtotal = levelInfo[level].gains;
+		var progress = levelInfo[level].current / levelInfo[level].gains * 100 + "%";
+		$scope.progress = progress;
 	}
 
 	$scope.refresh = function(){
@@ -70,12 +72,7 @@ app.controller('buttons', function($scope) {
 		$scope.schallenges = stats[3].challenges;
 		$scope.hist = deadHist;
 	}
-	$scope.getColor = function(){
-		//var x = x;
-		var style = "backgroundColor: LightGreen";
-
-		return style;
-	}
 	$scope.changeBench();
 	$scope.changeTotals();
 });
+

@@ -11,6 +11,9 @@
 		<h3>{{xrecords}} Records | {{xchallenges}} Challenges Completed</h3>
 		<p>{{xsets}} Sets | {{xreps}} Reps | {{xweight}} Pounds | {{xgains}} Gains</p>
 		<h2>Level {{xlevel}}: {{xcurrent}} / {{xtotal}} Gains</h2>
+		<div id="myProgress">
+  			<div id="myBar" ng-style="{width : progress};">{{progress}}</div>
+		</div>
 		<hr>
 	
 		<input type="button" ng-class="{'btn-warning': benchButton}" ng-click="changeBench()" onclick="refreshBench()" value="Bench">
@@ -23,7 +26,7 @@
 			<h2>Enter Set</h2>
 			<p>Weight: <input id="weight" type="text" value="100" ng-model="weight">{{weight}}</p>
 			<p>Reps: <input id="reps" type="text" value="10" ng-model="reps">{{reps}}</p>
-			<input type="button" onclick="addSet();addRecord();addChallenges();addStats();" ng-click="refresh();changeTotals();" value="Add">
+			<input type="button" onclick="addSet();addRecord();addChallenges();addStats();" ng-click="refresh();changeTotals()" value="Add">
 			<p id="response"></p>
 			<p id="response2"></p>
 			<p id="response3"></p>
