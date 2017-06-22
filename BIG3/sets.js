@@ -9,23 +9,23 @@ function addSet() {
 
 	if(a && b){
 		document.getElementById("response").innerHTML = exercise + " " + a + " x " +b;
-		set = date + " " + exercise + " " + a + " x " + b + "<br>";
+		set = {date: date, weight: a, reps: b};
 		//thisSetGains = thisSetGains + g;
 		if (exercise == "Bench"){
 			benchHist.push(set);
-			localStorage.setItem("benchHist", JSON.stringify(benchHist));
+			localStorage.setItem("nBenchHistory", JSON.stringify(benchHist));
 			benchArrayReps.push(b);
 			localStorage.setItem("benchArrayReps", JSON.stringify(benchArrayReps));
 			refreshBench();
 		} else if (exercise == "Squat"){
 			squatHist.push(set);
-			localStorage.setItem("squatHist", JSON.stringify(squatHist));
+			localStorage.setItem("newSquatHistory", JSON.stringify(squatHist));
 			squatArrayReps.push(b);
 			localStorage.setItem("squatArrayReps", JSON.stringify(squatArrayReps));
 			refreshSquat();
 		} else if (exercise == "Deadlift"){
 			deadHist.push(set);
-			localStorage.setItem("deadHist", JSON.stringify(deadHist));
+			localStorage.setItem("newDeadHistory", JSON.stringify(deadHist));
 			deadArrayReps.push(b);
 			localStorage.setItem("deadArrayReps", JSON.stringify(deadArrayReps));
 			refreshDead();

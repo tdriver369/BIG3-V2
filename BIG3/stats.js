@@ -5,39 +5,44 @@ function addStats() {
 	var b = parseInt(z);
 	var g = a * b;
 	var gains = g + thisSetGains;
-	document.getElementById("response2").innerHTML = "+ " + gains + " Gains!";
 
-	stats[0].gains += gains ;
-	stats[0].weight += a;
-	stats[0].reps += b;
-	stats[0].sets++;
+	if(a && b){
+		document.getElementById("response2").innerHTML = "+ " + gains + " Gains!";
 
-	if (exercise == "Bench"){
-		stats[1].gains += gains;
-		stats[1].weight += a;
-		stats[1].reps += b;
-		stats[1].sets++;
-	} else if (exercise =="Squat"){
-		stats[2].gains += gains;
-		stats[2].weight += a;
-		stats[2].reps += b;
-		stats[2].sets++;
-	} else if (exercise == "Deadlift"){
-		stats[3].gains += gains;
-		stats[3].weight += a;
-		stats[3].reps += b;
-		stats[3].sets++;
+		stats[0].gains += gains ;
+		stats[0].weight += a;
+		stats[0].reps += b;
+		stats[0].sets++;
+
+		if (exercise == "Bench"){
+			stats[1].gains += gains;
+			stats[1].weight += a;
+			stats[1].reps += b;
+			stats[1].sets++;
+		} else if (exercise =="Squat"){
+			stats[2].gains += gains;
+			stats[2].weight += a;
+			stats[2].reps += b;
+			stats[2].sets++;
+		} else if (exercise == "Deadlift"){
+			stats[3].gains += gains;
+			stats[3].weight += a;
+			stats[3].reps += b;
+			stats[3].sets++;
+		}
+		//NEEDS WORK
+		levelInfo[level].current += gains;
+		if (levelInfo[level].current > levelInfo[level].gains){
+			var current = levelInfo[level].current - levelInfo[level].gains;
+			level++;
+			levelInfo[level].current = current;
+		}
+
+		localStorage.setItem("newStats", JSON.stringify(stats));
+		localStorage.setItem("level", JSON.stringify(level));
+		localStorage.setItem("levelInfo", JSON.stringify(levelInfo));
+		thisSetGains = 0;
+	} else {
+		document.getElementById("response2").innerHTML = "No Gains Bro";
 	}
-	//NEEDS WORK
-	levelInfo[level].current += gains;
-	if (levelInfo[level].current > levelInfo[level].gains){
-		var current = levelInfo[level].current - levelInfo[level].gains;
-		level++;
-		levelInfo[level].current = current;
-	}
-
-	localStorage.setItem("newStats", JSON.stringify(stats));
-	localStorage.setItem("level", JSON.stringify(level));
-	localStorage.setItem("levelInfo", JSON.stringify(levelInfo));
-	thisSetGains = 0;
 }

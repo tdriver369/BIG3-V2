@@ -39,7 +39,24 @@
 
 			    <div class="tab-panel">
 					<div class="tab-content">
-						<pre>{{history|json}}</pre>>
+						<table class="table">
+							<tr class="odd">
+								<th>Set</th>
+								<th>Date</th>
+								<th>Weight</th>
+								<th>Reps</th>
+							</tr>
+							<tr ng-repeat="x in hist track by $index">
+								<td ng-if="$odd" class="odd">{{ $index + 1 }}</td>
+								<td ng-if="$even" class="even">{{ $index + 1 }}</td>
+								<td ng-if="$odd" class="odd">{{x.date}}</td>
+								<td ng-if="$even" class="even">{{x.date}}</td>
+								<td ng-if="$odd" class="odd">{{x.weight}}</td>
+								<td ng-if="$even" class="even">{{x.weight}}</td>
+								<td ng-if="$odd" class="odd">{{x.reps}}</td>
+								<td ng-if="$even" class="even">{{x.reps}}</td>
+							</tr>
+						</table>
 					</div>
 				</div>
 			</div>
@@ -50,16 +67,16 @@
 
 			    <div class="tab-panel">
 					<div class="tab-content">
-						<table>
-							<tr>
+						<table class="table">
+							<tr class="odd">
 								<th>Reps</th>
 								<th>Weight</th>
 								<th>Records</th>
 							</tr>
-							<tr ng-repeat="x in stack">
-								<td>{{$index + 1}}</td>
-								<td>{{x.weight}}</td>
-								<td>{{x.records}}</td>
+							<tr ng-repeat="x in stack" ng-class="{red: x.records == 0, green: x.records > 1, silver: x.records == 4, gold: x.records > 4}">
+								<td >{{$index + 1}}</td>
+								<td >{{x.weight}}</td>
+								<td >{{x.records}}</td>
 							</tr>
 						</table>
 					</div>
@@ -72,16 +89,16 @@
 
 			    <div class="tab-panel">
 					<div class="tab-content">
-						<table>
-							<tr>
+						<table class="table">
+							<tr class="odd">
 								<th>Weight</th>
 								<th>Reps</th>
 								<th>Records</th>
 							</tr>
-							<tr ng-repeat="x in pump">
-								<td>{{x.weight}}</td>
-								<td>{{x.reps}}</td>
-								<td>{{x.records}}</td>
+							<tr ng-repeat="x in pump" ng-class="{red: x.records == 0, green: x.records > 1, silver: x.records == 4, gold: x.records > 4}">
+								<td >{{x.weight}}</td>
+								<td >{{x.reps}}</td>
+								<td >{{x.records}}</td>
 							</tr>
 						</table>
 					</div>
@@ -94,14 +111,14 @@
 
 			    <div class="tab-panel">
 					<div class="tab-content">
-						<table>
-							<tr>
+						<table class="table">
+							<tr class="odd">
 								<th>Challenge</th>
 								<th>Status</th>
 							</tr>
-							<tr ng-repeat="x in challenge">
-								<td>{{x.title}}</td>
-								<td>{{x.challenge}}</td>
+							<tr ng-repeat="x in challenge" ng-class="{green: x.challenge == 'Complete!!', red: x.challenge != 'Complete!!'}">
+								<td >{{x.title}}</td>
+								<td >{{x.challenge}}</td>
 							</tr>
 						</table>
 					</div>
@@ -114,28 +131,28 @@
 
 			    <div class="tab-panel">
 					<div class="tab-content">
-						<table>
-							<tr>
+						<table class="table">
+							<tr class="odd">
 								<th>Gains</th>
 								<td>{{sgains}}</td>	
 							</tr>
-							<tr>
+							<tr class="even">
 								<th>Records</th>
 								<td>{{srecords}}</td>	
 							</tr>
-							<tr>
+							<tr class="odd">
 								<th>Challenges</th>
 								<td>{{schallenges}}</td>
 							</tr>
-							<tr>
+							<tr class="even">
 								<th>Sets</th>
 								<td>{{ssets}}</td>
 							</tr>
-							<tr>
+							<tr class="odd">
 								<th>Reps</th>
 								<td>{{sreps}}</td>
 							</tr>
-							<tr>
+							<tr class="even">
 								<th>Weight</th>
 								<td>{{sweight}} pounds</td>
 							</tr>

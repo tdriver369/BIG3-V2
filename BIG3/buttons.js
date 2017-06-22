@@ -38,7 +38,7 @@ app.controller('buttons', function($scope) {
 		$scope.sweight = stats[1].weight;
 		$scope.sgains = stats[1].gains;
 		$scope.schallenges = stats[1].challenges;
-		$scope.history = benchHist;
+		$scope.hist = benchHist;
 	}
 	$scope.changeSquat = function(){
 		$scope.squatButton = true;
@@ -53,7 +53,7 @@ app.controller('buttons', function($scope) {
 		$scope.sweight = stats[2].weight;
 		$scope.sgains = stats[2].gains;
 		$scope.schallenges = stats[2].challenges;
-		$scope.history = squatHist;
+		$scope.hist = squatHist;
 	}
 	$scope.changeDead = function(){
 		$scope.deadButton = true;
@@ -68,9 +68,14 @@ app.controller('buttons', function($scope) {
 		$scope.sweight = stats[3].weight;
 		$scope.sgains = stats[3].gains;
 		$scope.schallenges = stats[3].challenges;
-		$scope.history = deadHist;
+		$scope.hist = deadHist;
 	}
+	$scope.getColor = function(){
+		//var x = x;
+		var style = "backgroundColor: LightGreen";
 
+		return style;
+	}
 	$scope.changeBench();
 	$scope.changeTotals();
 });

@@ -1,7 +1,11 @@
 var exercise = "Bench";
-var benchHist = JSON.parse(localStorage.getItem("benchHist")) || [];
-var squatHist = JSON.parse(localStorage.getItem("squatHist")) || [];
-var deadHist = JSON.parse(localStorage.getItem("deadHist"))  || [];
+var benchHist = JSON.parse(localStorage.getItem("nBenchHistory")) || [
+	{date: "1-1", weight: 100, reps: 10,}];
+var squatHist = JSON.parse(localStorage.getItem("newSquatHistory")) || [
+	{date: "1-1", weight: 100, reps: 10,}];
+var deadHist = JSON.parse(localStorage.getItem("newDeadHistory"))  || [
+	{date: "1-1", weight: 100, reps: 10,}];
+
 var app = angular.module('myApp', []);
 
 var stacksBench = JSON.parse(localStorage.getItem("benchStack")) || [

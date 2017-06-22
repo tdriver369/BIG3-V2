@@ -74,3 +74,38 @@
 .tabs .tab [type="radio"]:checked ~ .tab-panel {
   display: inline;
 }
+
+.table, td, th {
+	border: 1px solid #ccc;
+	border-collapse: collapse;
+  	padding: 5px
+}
+
+.green {
+	background-color: LightGreen;
+}
+
+.red {
+	background-color: LightCoral;
+}
+
+.even {
+	background-color: LightPink;
+}
+
+.odd {
+	background-color: LightBlue;
+}
+
+.white {
+	background-color: white;
+}
+
+.gold {
+	background-color: gold;
+}
+
+.silver {
+	background-color: silver;
+}
+
