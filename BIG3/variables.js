@@ -170,3 +170,4 @@ var levelInfo = JSON.parse(localStorage.getItem("levelInfo")) || [
 
 var level = JSON.parse(localStorage.getItem("level")) || 0;
 
+var progress = JSON.parse(localStorage.getItem("progress")) || 0;

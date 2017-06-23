@@ -13,7 +13,6 @@ app.controller('buttons', function($scope) {
 		$scope.xlevel = levelInfo[level].name;
 		$scope.xcurrent = levelInfo[level].current;
 		$scope.xtotal = levelInfo[level].gains;
-		var progress = levelInfo[level].current / levelInfo[level].gains * 100 + "%";
 		$scope.progress = progress;
 	}
 
