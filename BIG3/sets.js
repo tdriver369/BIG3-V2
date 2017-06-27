@@ -8,24 +8,30 @@ function addSet() {
 	var b = parseInt(z);
 
 	if(a && b){
-		document.getElementById("response").innerHTML = exercise + " " + a + " x " +b;
-		set = {date: date, weight: a, reps: b};
+		document.getElementById("response").innerHTML = exercise + " " + a + " x " + b;
+		
 		//thisSetGains = thisSetGains + g;
 		if (exercise == "Bench"){
+			var num = benchHist.length;
+			set = {set: num, date: date, weight: a, reps: b};
 			benchHist.push(set);
-			localStorage.setItem("nBenchHistory", JSON.stringify(benchHist));
+			localStorage.setItem("bb", JSON.stringify(benchHist));
 			benchArrayReps.push(b);
 			localStorage.setItem("benchArrayReps", JSON.stringify(benchArrayReps));
 			refreshBench();
 		} else if (exercise == "Squat"){
+			var num = squatHist.length;
+			set = {set: num, date: date, weight: a, reps: b};
 			squatHist.push(set);
-			localStorage.setItem("newSquatHistory", JSON.stringify(squatHist));
+			localStorage.setItem("ss", JSON.stringify(squatHist));
 			squatArrayReps.push(b);
 			localStorage.setItem("squatArrayReps", JSON.stringify(squatArrayReps));
 			refreshSquat();
 		} else if (exercise == "Deadlift"){
+			var num = deadHist.length;
+			set = {set: num, date: date, weight: a, reps: b};
 			deadHist.push(set);
-			localStorage.setItem("newDeadHistory", JSON.stringify(deadHist));
+			localStorage.setItem("dd", JSON.stringify(deadHist));
 			deadArrayReps.push(b);
 			localStorage.setItem("deadArrayReps", JSON.stringify(deadArrayReps));
 			refreshDead();

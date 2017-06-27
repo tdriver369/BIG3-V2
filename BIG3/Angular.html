@@ -40,25 +40,46 @@
 			    <input class="tab-radio" type="radio" id="tab-1" name="tab-group-1" checked>
 			    <label class="tab-label" for="tab-1">History</label>
 
-			    <div class="tab-panel">
-					<div class="tab-content">
+			    <div class="tab-panel" id="table-wrapper">
+					<div class="tab-content" id="table-scroll">
+						<span class="label">Ordered By: {{orderByField}}, Reverse Sort: {{reverseSort}}</span><br>
 						<table class="table">
-							<tr class="odd">
-								<th>Set</th>
-								<th>Date</th>
-								<th>Weight</th>
-								<th>Reps</th>
-							</tr>
-							<tr ng-repeat="x in hist track by $index">
-								<td ng-if="$odd" class="odd">{{ $index + 1 }}</td>
-								<td ng-if="$even" class="even">{{ $index + 1 }}</td>
-								<td ng-if="$odd" class="odd">{{x.date}}</td>
-								<td ng-if="$even" class="even">{{x.date}}</td>
-								<td ng-if="$odd" class="odd">{{x.weight}}</td>
-								<td ng-if="$even" class="even">{{x.weight}}</td>
-								<td ng-if="$odd" class="odd">{{x.reps}}</td>
-								<td ng-if="$even" class="even">{{x.reps}}</td>
-							</tr>
+							<thead>
+								<tr class="odd">
+									<th>
+										<a href="#" ng-click="orderByField='set'; reverseSort = !reverseSort">
+	        							Set <span ng-show="orderByField == 'set'"><span ng-show="!reverseSort">^</span><span ng-show="reverseSort">v</span></span>
+	          							</a>
+									</th>
+									<th>
+										<a href="#" ng-click="orderByField='date'; reverseSort = !reverseSort">
+	        							Date <span ng-show="orderByField == 'date'"><span ng-show="!reverseSort">^</span><span ng-show="reverseSort">v</span></span>
+	          							</a>
+	          						</th>
+									<th>
+										<a href="#" ng-click="orderByField='weight'; reverseSort = !reverseSort">
+	        							Weight <span ng-show="orderByField == 'weight'"><span ng-show="!reverseSort">^</span><span ng-show="reverseSort">v</span></span>
+	          							</a>
+									</th>
+									<th>
+										<a href="#" ng-click="orderByField='reps'; reverseSort = !reverseSort">
+	        							Reps <span ng-show="orderByField == 'reps'"><span ng-show="!reverseSort">^</span><span ng-show="reverseSort">v</span></span>
+	          							</a>
+									</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr ng-repeat="x in hist|orderBy:orderByField:reverseSort track by $index">
+									<td ng-if="$odd" class="odd">{{x.set}}</td>
+									<td ng-if="$even" class="even">{{x.set}}</td>
+									<td ng-if="$odd" class="odd">{{x.date}}</td>
+									<td ng-if="$even" class="even">{{x.date}}</td>
+									<td ng-if="$odd" class="odd">{{x.weight}}</td>
+									<td ng-if="$even" class="even">{{x.weight}}</td>
+									<td ng-if="$odd" class="odd">{{x.reps}}</td>
+									<td ng-if="$even" class="even">{{x.reps}}</td>
+								</tr>
+							</tbody>
 						</table>
 					</div>
 				</div>
@@ -68,20 +89,37 @@
 			    <input class="tab-radio" type="radio" id="tab-2" name="tab-group-1">
 			    <label class="tab-label" for="tab-2">Stacks</label>
 
-			    <div class="tab-panel">
+			    <div class="tab-panel" id="table-wrapper">
 					<div class="tab-content">
+						<span class="label">Ordered By: {{orderByField2}}, Reverse Sort: {{reverseSort2}}</span><br>						
 						<table class="table">
 							<tr class="odd">
-								<th>Reps</th>
-								<th>Weight</th>
-								<th>Records</th>
+								<th>
+									<a href="#" ng-click="orderByField2='reps'; reverseSort2 = !reverseSort2">
+        							Reps <span ng-show="orderByField2 == 'reps'"><span ng-show="!reverseSort2">^</span><span ng-show="reverseSort2">v</span></span>
+          							</a>
+								</th>
+								<th>
+									<a href="#" ng-click="orderByField2='weight'; reverseSort2 = !reverseSort2">
+        							Weight <span ng-show="orderByField2 == 'weight'"><span ng-show="!reverseSort2">^</span><span ng-show="reverseSort2">v</span></span>
+          							</a>
+								</th>
+								<th>
+									<a href="#" ng-click="orderByField2='records'; reverseSort2 = !reverseSort2">
+        							Records <span ng-show="orderByField2 == 'records'"><span ng-show="!reverseSort2">^</span><span ng-show="reverseSort2">v</span></span>
+          							</a>
+								</th>
 							</tr>
-							<tr ng-repeat="x in stack" ng-class="{red: x.records == 0, green: x.records > 1, silver: x.records == 4, gold: x.records > 4}">
-								<td >{{$index + 1}}</td>
+							<tr ng-repeat="x in stack|orderBy:orderByField2:reverseSort2" ng-class="{red: x.records == 0, green: x.records > 1, silver: x.records == 4, gold: x.records > 4}">
+								<td >{{x.reps}}</td>
 								<td >{{x.weight}}</td>
 								<td >{{x.records}}</td>
 							</tr>
 						</table>
+						<div class="graphs">
+							<fusioncharts type="column2d" datasource="{{myDataSource}}">
+							</fusioncharts>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -90,20 +128,37 @@
 			    <input class="tab-radio" type="radio" id="tab-3" name="tab-group-1">
 			    <label class="tab-label" for="tab-3">Pumps</label>
 
-			    <div class="tab-panel">
+			    <div class="tab-panel" id="table-wrapper">
 					<div class="tab-content">
+						<span class="label">Ordered By: {{orderByField3}}, Reverse Sort: {{reverseSort2}}</span><br>
 						<table class="table">
 							<tr class="odd">
-								<th>Weight</th>
-								<th>Reps</th>
-								<th>Records</th>
+								<th>
+									<a href="#" ng-click="orderByField3='weight'; reverseSort2 = !reverseSort2">
+        							Weight <span ng-show="orderByField3 == 'weight'"><span ng-show="!reverseSort2">^</span><span ng-show="reverseSort2">v</span></span>
+          							</a>
+								</th>
+								<th>
+									<a href="#" ng-click="orderByField3='reps'; reverseSort2 = !reverseSort2">
+        							Reps <span ng-show="orderByField3 == 'reps'"><span ng-show="!reverseSort2">^</span><span ng-show="reverseSort2">v</span></span>
+          							</a>
+								</th>
+								<th>
+									<a href="#" ng-click="orderByField3='records'; reverseSort2 = !reverseSort2">
+        							Records <span ng-show="orderByField3 == 'records'"><span ng-show="!reverseSort2">^</span><span ng-show="reverseSort2">v</span></span>
+          							</a>
+								</th>
 							</tr>
-							<tr ng-repeat="x in pump" ng-class="{red: x.records == 0, green: x.records > 1, silver: x.records == 4, gold: x.records > 4}">
+							<tr ng-repeat="x in pump|orderBy:orderByField3:reverseSort2" ng-class="{red: x.records == 0, green: x.records > 1, silver: x.records == 4, gold: x.records > 4}">
 								<td >{{x.weight}}</td>
 								<td >{{x.reps}}</td>
 								<td >{{x.records}}</td>
 							</tr>
 						</table>
+						<div class="graphs">
+							<fusioncharts type="column2d" datasource="{{myDataSource2}}">
+							</fusioncharts>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -112,14 +167,25 @@
 			    <input class="tab-radio" type="radio" id="tab-4" name="tab-group-1">
 			    <label class="tab-label" for="tab-4">Challenges</label>
 
-			    <div class="tab-panel">
+			    <div class="tab-panel" id="table-wrapper">
 					<div class="tab-content">
+						<span class="label">Ordered By: {{orderByField4}}, Reverse Sort: {{reverseSort2}}</span><br>
 						<table class="table">
 							<tr class="odd">
+								<th>
+									<a href="#" ng-click="orderByField4='num'; reverseSort2 = !reverseSort2">
+        							Number <span ng-show="orderByField4 == 'num'"><span ng-show="!reverseSort2">^</span><span ng-show="reverseSort2">v</span></span>
+          							</a>
+								</th>
 								<th>Challenge</th>
-								<th>Status</th>
+								<th>
+									<a href="#" ng-click="orderByField4='challenge'; reverseSort2 = !reverseSort2">
+        							Status <span ng-show="orderByField4 == 'challenge'"><span ng-show="!reverseSort2">^</span><span ng-show="reverseSort2">v</span></span>
+          							</a>
+								</th>
 							</tr>
-							<tr ng-repeat="x in challenge" ng-class="{green: x.challenge == 'Complete!!', red: x.challenge != 'Complete!!'}">
+							<tr ng-repeat="x in challenge|orderBy:orderByField4:reverseSort2" ng-class="{green: x.challenge == 'Complete!!', red: x.challenge != 'Complete!!'}">
+								<td>{{x.num}}</td>
 								<td >{{x.title}}</td>
 								<td >{{x.challenge}}</td>
 							</tr>
@@ -132,7 +198,7 @@
 			    <input class="tab-radio" type="radio" id="tab-5" name="tab-group-1">
 			    <label class="tab-label" for="tab-5">Stats</label>
 
-			    <div class="tab-panel">
+			    <div class="tab-panel" id="table-wrapper">
 					<div class="tab-content">
 						<table class="table">
 							<tr class="odd">
@@ -172,6 +238,9 @@
 <script src="challenges.js"></script>
 <script src="stats.js"></script>
 <script src="buttons.js"></script>
+<script src="fusioncharts.js"></script>
+<script src="fusioncharts.charts.js"></script>
+<script src="angular-fusioncharts.min.js"></script>
 </body>
 </html>
 

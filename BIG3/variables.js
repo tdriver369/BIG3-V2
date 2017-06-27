@@ -1,29 +1,29 @@
 var exercise = "Bench";
-var benchHist = JSON.parse(localStorage.getItem("nBenchHistory")) || [
-	{date: "1-1", weight: 100, reps: 10,}];
-var squatHist = JSON.parse(localStorage.getItem("newSquatHistory")) || [
-	{date: "1-1", weight: 100, reps: 10,}];
-var deadHist = JSON.parse(localStorage.getItem("newDeadHistory"))  || [
-	{date: "1-1", weight: 100, reps: 10,}];
+var benchHist = JSON.parse(localStorage.getItem("bb")) || [
+	{set: 0, date: "0-0", weight: 0, reps: 10,}];
+var squatHist = JSON.parse(localStorage.getItem("ss")) || [
+	{set: 0, date: "0-0", weight: 0, reps: 10,}];
+var deadHist = JSON.parse(localStorage.getItem("dd"))  || [
+	{set: 0, date: "0-0", weight: 0, reps: 10,}];
 
-var app = angular.module('myApp', []);
+var app = angular.module('myApp', ["ng-fusioncharts"]);
 
-var stacksBench = JSON.parse(localStorage.getItem("benchStack")) || [
-	{weight: 0, records: 0},
-	{weight: 0, records: 0},
-	{weight: 0, records: 0},
-	{weight: 0, records: 0},
-	{weight: 0, records: 0},
-	{weight: 0, records: 0},
-	{weight: 0, records: 0},
-	{weight: 0, records: 0},
-	{weight: 0, records: 0},
-	{weight: 0, records: 0},
-	{weight: 0, records: 0},
-	{weight: 0, records: 0},
-	{weight: 0, records: 0},
-	{weight: 0, records: 0},
-	{weight: 0, records: 0}];
+var stacksBench = JSON.parse(localStorage.getItem("bbStack")) || [
+	{reps: 1, weight: 0, records: 0},
+	{reps: 2, weight: 0, records: 0},
+	{reps: 3, weight: 0, records: 0},
+	{reps: 4, weight: 0, records: 0},
+	{reps: 5, weight: 0, records: 0},
+	{reps: 6, weight: 0, records: 0},
+	{reps: 7, weight: 0, records: 0},
+	{reps: 8, weight: 0, records: 0},
+	{reps: 9, weight: 0, records: 0},
+	{reps: 10, weight: 0, records: 0},
+	{reps: 11, weight: 0, records: 0},
+	{reps: 12, weight: 0, records: 0},
+	{reps: 13, weight: 0, records: 0},
+	{reps: 14, weight: 0, records: 0},
+	{reps: 15, weight: 0, records: 0}];
 
 var pumpsBench = JSON.parse(localStorage.getItem("benchPump")) || [
 	{weight: 45, reps: 0, records: 0},
@@ -38,22 +38,22 @@ var pumpsBench = JSON.parse(localStorage.getItem("benchPump")) || [
 	{weight: 455, reps: 0, records: 0},
 	{weight: 495, reps: 0, records: 0}];
 
-var stacksDead = JSON.parse(localStorage.getItem("deadStack")) || [
-	{weight: 0, records: 0},
-	{weight: 0, records: 0},
-	{weight: 0, records: 0},
-	{weight: 0, records: 0},
-	{weight: 0, records: 0},
-	{weight: 0, records: 0},
-	{weight: 0, records: 0},
-	{weight: 0, records: 0},
-	{weight: 0, records: 0},
-	{weight: 0, records: 0},
-	{weight: 0, records: 0},
-	{weight: 0, records: 0},
-	{weight: 0, records: 0},
-	{weight: 0, records: 0},
-	{weight: 0, records: 0}];
+var stacksDead = JSON.parse(localStorage.getItem("ddStack")) || [
+	{reps: 1, weight: 0, records: 0},
+	{reps: 2, weight: 0, records: 0},
+	{reps: 3, weight: 0, records: 0},
+	{reps: 4, weight: 0, records: 0},
+	{reps: 5, weight: 0, records: 0},
+	{reps: 6, weight: 0, records: 0},
+	{reps: 7, weight: 0, records: 0},
+	{reps: 8, weight: 0, records: 0},
+	{reps: 9, weight: 0, records: 0},
+	{reps: 10, weight: 0, records: 0},
+	{reps: 11, weight: 0, records: 0},
+	{reps: 12, weight: 0, records: 0},
+	{reps: 13, weight: 0, records: 0},
+	{reps: 14, weight: 0, records: 0},
+	{reps: 15, weight: 0, records: 0}];
 
 var pumpsDead = JSON.parse(localStorage.getItem("deadPump")) || [
 	{weight: 45, reps: 0, records: 0},
@@ -68,22 +68,22 @@ var pumpsDead = JSON.parse(localStorage.getItem("deadPump")) || [
 	{weight: 455, reps: 0, records: 0},
 	{weight: 495, reps: 0, records: 0}];
 
-var stacksSquat = JSON.parse(localStorage.getItem("squatStack")) || [
-	{weight: 0, records: 0},
-	{weight: 0, records: 0},
-	{weight: 0, records: 0},
-	{weight: 0, records: 0},
-	{weight: 0, records: 0},
-	{weight: 0, records: 0},
-	{weight: 0, records: 0},
-	{weight: 0, records: 0},
-	{weight: 0, records: 0},
-	{weight: 0, records: 0},
-	{weight: 0, records: 0},
-	{weight: 0, records: 0},
-	{weight: 0, records: 0},
-	{weight: 0, records: 0},
-	{weight: 0, records: 0}];
+var stacksSquat = JSON.parse(localStorage.getItem("ssStack")) || [
+	{reps: 1, weight: 0, records: 0},
+	{reps: 2, weight: 0, records: 0},
+	{reps: 3, weight: 0, records: 0},
+	{reps: 4, weight: 0, records: 0},
+	{reps: 5, weight: 0, records: 0},
+	{reps: 6, weight: 0, records: 0},
+	{reps: 7, weight: 0, records: 0},
+	{reps: 8, weight: 0, records: 0},
+	{reps: 9, weight: 0, records: 0},
+	{reps: 10, weight: 0, records: 0},
+	{reps: 11, weight: 0, records: 0},
+	{reps: 12, weight: 0, records: 0},
+	{reps: 13, weight: 0, records: 0},
+	{reps: 14, weight: 0, records: 0},
+	{reps: 15, weight: 0, records: 0}];
 
 var pumpsSquat = JSON.parse(localStorage.getItem("squatPump")) || [
 	{weight: 45, reps: 0, records: 0},
@@ -98,41 +98,41 @@ var pumpsSquat = JSON.parse(localStorage.getItem("squatPump")) || [
 	{weight: 455, reps: 0, records: 0},
 	{weight: 495, reps: 0, records: 0}];
 
-var benchChallenges = JSON.parse(localStorage.getItem("benchChallenges")) || [
-	{title: "2 sets of 20 reps", challenge: "Incomplete"},
-	{title: "2 sets of 18 reps", challenge: "Incomplete"},
-	{title: "3 sets of 15 reps", challenge: "Incomplete"},
-	{title: "3 sets of 12 reps", challenge: "Incomplete"},
-	{title: "4 sets of 10 reps", challenge: "Incomplete"},
-	{title: "4 sets of 8 reps", challenge: "Incomplete"},
-	{title: "5 sets of 5 reps", challenge: "Incomplete"},
-	{title: "5 sets of 3 reps", challenge: "Incomplete"},
-	{title: "6, 8, then 10 reps", challenge: "Incomplete"},
-	{title: "10, 8, then 6 reps", challenge: "Incomplete"}];
+var benchChallenges = JSON.parse(localStorage.getItem("bbChallenges")) || [
+	{num: 1, title: "2 sets of 20 reps", challenge: "Incomplete"},
+	{num: 2, title: "2 sets of 18 reps", challenge: "Incomplete"},
+	{num: 3, title: "3 sets of 15 reps", challenge: "Incomplete"},
+	{num: 4, title: "3 sets of 12 reps", challenge: "Incomplete"},
+	{num: 5, title: "4 sets of 10 reps", challenge: "Incomplete"},
+	{num: 6, title: "4 sets of 8 reps", challenge: "Incomplete"},
+	{num: 7, title: "5 sets of 5 reps", challenge: "Incomplete"},
+	{num: 8, title: "5 sets of 3 reps", challenge: "Incomplete"},
+	{num: 9, title: "6, 8, then 10 reps", challenge: "Incomplete"},
+	{num: 10, title: "10, 8, then 6 reps", challenge: "Incomplete"}];
 
-var squatChallenges = JSON.parse(localStorage.getItem("squatChallenges")) || [
-	{title: "2 sets of 20 reps", challenge: "Incomplete"},
-	{title: "2 sets of 18 reps", challenge: "Incomplete"},
-	{title: "3 sets of 15 reps", challenge: "Incomplete"},
-	{title: "3 sets of 12 reps", challenge: "Incomplete"},
-	{title: "4 sets of 10 reps", challenge: "Incomplete"},
-	{title: "4 sets of 8 reps", challenge: "Incomplete"},
-	{title: "5 sets of 5 reps", challenge: "Incomplete"},
-	{title: "5 sets of 3 reps", challenge: "Incomplete"},
-	{title: "6, 8, then 10 reps", challenge: "Incomplete"},
-	{title: "10, 8, then 6 reps", challenge: "Incomplete"}];
+var squatChallenges = JSON.parse(localStorage.getItem("ssChallenges")) || [
+	{num: 1, title: "2 sets of 20 reps", challenge: "Incomplete"},
+	{num: 2, title: "2 sets of 18 reps", challenge: "Incomplete"},
+	{num: 3, title: "3 sets of 15 reps", challenge: "Incomplete"},
+	{num: 4, title: "3 sets of 12 reps", challenge: "Incomplete"},
+	{num: 5, title: "4 sets of 10 reps", challenge: "Incomplete"},
+	{num: 6, title: "4 sets of 8 reps", challenge: "Incomplete"},
+	{num: 7, title: "5 sets of 5 reps", challenge: "Incomplete"},
+	{num: 8, title: "5 sets of 3 reps", challenge: "Incomplete"},
+	{num: 9, title: "6, 8, then 10 reps", challenge: "Incomplete"},
+	{num: 10, title: "10, 8, then 6 reps", challenge: "Incomplete"}];
 
-var deadChallenges = JSON.parse(localStorage.getItem("deadChallenges")) || [
-	{title: "2 sets of 20 reps", challenge: "Incomplete"},
-	{title: "2 sets of 18 reps", challenge: "Incomplete"},
-	{title: "3 sets of 15 reps", challenge: "Incomplete"},
-	{title: "3 sets of 12 reps", challenge: "Incomplete"},
-	{title: "4 sets of 10 reps", challenge: "Incomplete"},
-	{title: "4 sets of 8 reps", challenge: "Incomplete"},
-	{title: "5 sets of 5 reps", challenge: "Incomplete"},
-	{title: "5 sets of 3 reps", challenge: "Incomplete"},
-	{title: "6, 8, then 10 reps", challenge: "Incomplete"},
-	{title: "10, 8, then 6 reps", challenge: "Incomplete"}];
+var deadChallenges = JSON.parse(localStorage.getItem("ddChallenges")) || [
+	{num: 1, title: "2 sets of 20 reps", challenge: "Incomplete"},
+	{num: 2, title: "2 sets of 18 reps", challenge: "Incomplete"},
+	{num: 3, title: "3 sets of 15 reps", challenge: "Incomplete"},
+	{num: 4, title: "3 sets of 12 reps", challenge: "Incomplete"},
+	{num: 5, title: "4 sets of 10 reps", challenge: "Incomplete"},
+	{num: 6, title: "4 sets of 8 reps", challenge: "Incomplete"},
+	{num: 7, title: "5 sets of 5 reps", challenge: "Incomplete"},
+	{num: 8, title: "5 sets of 3 reps", challenge: "Incomplete"},
+	{num: 9, title: "6, 8, then 10 reps", challenge: "Incomplete"},
+	{num: 10, title: "10, 8, then 6 reps", challenge: "Incomplete"}];
 
 var benchArrayReps = JSON.parse(localStorage.getItem("benchArrayReps")) || [];
 var squatArrayReps = JSON.parse(localStorage.getItem("squatArrayReps")) || [];

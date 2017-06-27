@@ -2,7 +2,51 @@ app.controller('buttons', function($scope) {
 	$scope.benchButton = true;
 	$scope.squatButton = false;
 	$scope.deadButton = false;
-	
+
+	$scope.myDataSource = {
+	    chart: {
+	        caption: "Stacks",
+	        subCaption: "Weight Records",
+	    },
+	    data: [
+	    	{label: "Reps", value: 100},
+	    	{label: "Reps", value: 100},
+	    	{label: "Reps", value: 100},
+	    	{label: "Reps", value: 100},
+	    	{label: "Reps", value: 100},
+	    	{label: "Reps", value: 100},
+	    	{label: "Reps", value: 100},
+	    	{label: "Reps", value: 100},
+	    	{label: "Reps", value: 100},
+	    	{label: "Reps", value: 100},
+	    	{label: "Reps", value: 100},
+	    	{label: "Reps", value: 100},
+	    	{label: "Reps", value: 100},
+	    	{label: "Reps", value: 100},
+	    	{label: "Reps", value: 100}
+	    ],
+	};
+
+	$scope.myDataSource2 = {
+	    chart: {
+	        caption: "Pumps",
+	        subCaption: "Reps Records",
+	    },
+	    data: [
+	    	{label: "Reps", value: 100},
+	    	{label: "Reps", value: 100},
+	    	{label: "Reps", value: 100},
+	    	{label: "Reps", value: 100},
+	    	{label: "Reps", value: 100},
+	    	{label: "Reps", value: 100},
+	    	{label: "Reps", value: 100},
+	    	{label: "Reps", value: 100},
+	    	{label: "Reps", value: 100},
+	    	{label: "Reps", value: 100},
+	    	{label: "Reps", value: 100}
+	    ],
+	};
+
 	$scope.changeTotals = function(){
 		$scope.xrecords = stats[0].records;
 		$scope.xreps = stats[0].reps;
@@ -40,6 +84,20 @@ app.controller('buttons', function($scope) {
 		$scope.sgains = stats[1].gains;
 		$scope.schallenges = stats[1].challenges;
 		$scope.hist = benchHist;
+		$scope.orderByField = 'set';
+		$scope.orderByField2 = 'reps';
+		$scope.orderByField3 = 'weight';
+		$scope.orderByField4 = 'num';
+ 		$scope.reverseSort = true;
+ 		$scope.reverseSort2 = false;
+ 		for (i = 0, j=14; i<stacksBench.length; i++, j--){
+	    	$scope.myDataSource.data[j].label = stacksBench[i].reps.toString();
+	    	$scope.myDataSource.data[j].value = stacksBench[i].weight;
+	    }
+	    for (i = 0, j=10; i<pumpsBench.length; i++, j--){
+	    	$scope.myDataSource2.data[j].label = pumpsBench[i].weight.toString();
+	    	$scope.myDataSource2.data[j].value = pumpsBench[i].reps;
+	    }
 	}
 	$scope.changeSquat = function(){
 		$scope.squatButton = true;
@@ -55,6 +113,20 @@ app.controller('buttons', function($scope) {
 		$scope.sgains = stats[2].gains;
 		$scope.schallenges = stats[2].challenges;
 		$scope.hist = squatHist;
+		$scope.orderByField = 'set';
+		$scope.orderByField2 = 'reps';
+		$scope.orderByField3 = 'weight';
+		$scope.orderByField4 = 'num';
+ 		$scope.reverseSort = true;
+ 		$scope.reverseSort2 = false;
+ 		for (i = 0, j=14; i<stacksSquat.length; i++, j--){
+	    	$scope.myDataSource.data[j].label = stacksSquat[i].reps.toString();
+	    	$scope.myDataSource.data[j].value = stacksSquat[i].weight;
+	    }
+	    for (i = 0, j=10; i<pumpsSquat.length; i++, j--){
+	    	$scope.myDataSource2.data[j].label = pumpsSquat[i].weight.toString();
+	    	$scope.myDataSource2.data[j].value = pumpsSquat[i].reps;
+		}
 	}
 	$scope.changeDead = function(){
 		$scope.deadButton = true;
@@ -70,8 +142,21 @@ app.controller('buttons', function($scope) {
 		$scope.sgains = stats[3].gains;
 		$scope.schallenges = stats[3].challenges;
 		$scope.hist = deadHist;
+		$scope.orderByField = 'set';
+		$scope.orderByField2 = 'reps';
+		$scope.orderByField3 = 'weight';
+		$scope.orderByField4 = 'num';
+ 		$scope.reverseSort = true;
+ 		$scope.reverseSort2 = false;
+ 		for (i = 0, j=14; i<stacksDead.length; i++, j--){
+	    	$scope.myDataSource.data[j].label = stacksDead[i].reps.toString();
+	    	$scope.myDataSource.data[j].value = stacksDead[i].weight;
+	    }
+	    for (i = 0, j=10; i<pumpsDead.length; i++, j--){
+	    	$scope.myDataSource2.data[j].label = pumpsDead[i].weight.toString();
+	    	$scope.myDataSource2.data[j].value = pumpsDead[i].reps;
+	    }
 	}
 	$scope.changeBench();
 	$scope.changeTotals();
 });
-

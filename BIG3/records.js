@@ -16,7 +16,7 @@ function addRecord() {
 			stats[0].records++;
 			stats[1].records++;
 			thisSetGains = thisSetGains + 5000;
-			localStorage.setItem("benchStack", JSON.stringify(stacksBench));
+			localStorage.setItem("bbStack", JSON.stringify(stacksBench));
 			document.getElementById("response3").innerHTML = "New Record!";
 		}
 		for (var i in pumpsBench) {
@@ -41,7 +41,7 @@ function addRecord() {
 			stats[0].records++;
 			stats[2].records++;
 			thisSetGains = thisSetGains + 5000;
-			localStorage.setItem("squatStack", JSON.stringify(stacksSquat));
+			localStorage.setItem("ssStack", JSON.stringify(stacksSquat));
 			document.getElementById("response3").innerHTML = "New Record!";
 			}
 	
@@ -67,7 +67,7 @@ function addRecord() {
 			stats[0].records++;
 			stats[3].records++;
 			thisSetGains = thisSetGains + 5000;
-			localStorage.setItem("deadStack", JSON.stringify(stacksDead));
+			localStorage.setItem("ddStack", JSON.stringify(stacksDead));
 			document.getElementById("response3").innerHTML = "New Record!";
 			}
 	
