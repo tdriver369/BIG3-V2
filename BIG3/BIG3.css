@@ -146,3 +146,29 @@
 .graphs {
 	width:100%;
 }
+
+.scrollingtable {
+  box-sizing: border-box;
+  display: inline-block;
+  vertical-align: middle;
+  overflow: hidden;
+  width: auto; /*if you want a fixed width, set it here, else set to auto*/
+  min-width: 0/*100%*/; /*if you want a % width, set it here, else set to 0*/
+  height: 300px/*100%*/; /*set table height here; can be fixed value or %*/
+  min-height: 0/*104px*/; /*if using % height, make this large enough to fit scrollbar arrows + caption + thead*/
+
+}
+
+.scrollingtable > div > div {
+  min-height: 0/*43px*/; /*if using % height, make this large enough to fit scrollbar arrows*/
+  max-height: 100%;
+  overflow: scroll/*auto*/; /*set to auto if using fixed or % width; else scroll*/
+  overflow-x: hidden;
+  border: 1px solid black; /*border around table body*/
+}
+
+
+
+
+
+

@@ -9,7 +9,7 @@ function addStats() {
 	if(a && b){
 		document.getElementById("response2").innerHTML = "+ " + gains + " Gains!";
 
-		stats[0].gains += gains ;
+		stats[0].gains += gains;
 		stats[0].weight += a;
 		stats[0].reps += b;
 		stats[0].sets++;
@@ -30,6 +30,7 @@ function addStats() {
 			stats[3].reps += b;
 			stats[3].sets++;
 		}
+		stats[0].oneRM = stats[1].oneRM + stats[2].oneRM + stats[3].oneRM;
 		//NEEDS WORK
 		levelInfo[level].current += gains;
 		if (levelInfo[level].current > levelInfo[level].gains){
@@ -39,7 +40,7 @@ function addStats() {
 		}
 		progress = levelInfo[level].current / levelInfo[level].gains * 100 + "%";
 		localStorage.setItem("progress", JSON.stringify(progress));
-		localStorage.setItem("newStats", JSON.stringify(stats));
+		localStorage.setItem("nnnStats", JSON.stringify(stats));
 		localStorage.setItem("level", JSON.stringify(level));
 		localStorage.setItem("levelInfo", JSON.stringify(levelInfo));
 		thisSetGains = 0;
