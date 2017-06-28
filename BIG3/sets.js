@@ -10,7 +10,6 @@ function addSet() {
 	var o = 0;
 
 	if(a && b){
-		document.getElementById("response").innerHTML = exercise + " " + a + " x " + b;
 		
 		//thisSetGains = thisSetGains + g;
 		if (exercise == "Bench"){

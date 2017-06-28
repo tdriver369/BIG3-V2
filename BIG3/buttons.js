@@ -111,7 +111,8 @@ app.controller('buttons', function($scope) {
 		$scope.orderByField3 = 'weight';
 		$scope.orderByField4 = 'num';
  		$scope.reverseSort = true;
- 		$scope.reverseSort2 = false;	
+ 		$scope.reverseSort2 = false;
+ 		$scope.exercise = exercise;	
 	}
 	$scope.changeSquat = function(){
 		$scope.squatButton = true;
@@ -133,7 +134,8 @@ app.controller('buttons', function($scope) {
 		$scope.orderByField3 = 'weight';
 		$scope.orderByField4 = 'num';
  		$scope.reverseSort = true;
- 		$scope.reverseSort2 = false; 		
+ 		$scope.reverseSort2 = false;
+ 		$scope.exercise = exercise; 		
 	}
 	$scope.changeDead = function(){
 		$scope.deadButton = true;
@@ -156,6 +158,7 @@ app.controller('buttons', function($scope) {
 		$scope.orderByField4 = 'num';
  		$scope.reverseSort = true;
  		$scope.reverseSort2 = false;
+ 		$scope.exercise = exercise;
 	}
 	$scope.weightStacks = function(){
 		$scope.weightButton = true;

@@ -93,7 +93,7 @@
 }
 
 .even {
-	background-color: LightPink;
+	background-color: white;
 }
 
 .odd {
@@ -167,8 +167,39 @@
   border: 1px solid black; /*border around table body*/
 }
 
+#bigboi {
+	font-size: 60px;
+	font-family: Impact;
 
+}
 
+#points {
+	padding: 0;
+	font-weight: bold;
+	font-size: 30px;
+	margin: 0;
+	border: none;
+	border-collapse: collapse;
+	font-family: Impact;
+
+}
+#header td{
+	border: none;
+	border-collapse: collapse;
+	padding: 0;
+	margin: 0;
+	text-align: center;
+
+}
+
+.butt {
+	width: 100px;
+	height: 30px;
+}
+
+.sick{
+  color:Crimson;
+}
 
 
 

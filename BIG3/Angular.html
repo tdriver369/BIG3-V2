@@ -4,35 +4,49 @@
 		<link href="BIG3.css" type="text/css" rel="stylesheet">
 		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
 	</head>
-<body ng-app="myApp">
-		<h1>BIG3</h1>
-		
+<body ng-app="myApp">	
 	<div ng-controller="buttons">
-		<h3>{{xrecords}} Records | {{xchallenges}} Challenges | {{xoneRM}} 1RM</h3>
-		<p>{{xsets}} Sets | {{xreps}} Reps | {{xweight}} Pounds | {{xgains}} Gains</p>
-		<h2>Level {{xlevel}}: {{xcurrent}} / {{xtotal}} Gains</h2>
+		<table id="header">
+			<tr>
+				<td colspan="3" rowspan="3">
+					<img src="Drive.jpg" style="width: 150px; height: 150px">
+				</td>
+				<td>
+					<span id="bigboi">TH<span class="sick">3</span> BIG THR<span class="sick">33</span></span>
+				</td>
+				<td>
+					<p>Weight: <input id="weight" type="text" value="100" ng-model="weight"></p>
+					<p>Reps: <input id="reps" type="text" value="10" ng-model="reps"></p>
+					
+				</td>
+			</tr>
+			<tr>	
+				<td>
+					<span >
+					<input class ="butt" type="button" ng-class="{'btn-warning': benchButton}" ng-click="changeBench()" onclick="refreshBench()" value="Bench"> ---
+					<input class ="butt" type="button" ng-class="{'btn-warning': squatButton}" ng-click="changeSquat()" onclick="refreshSquat()" value="Squat"> ---
+					<input class ="butt" type="button" ng-class="{'btn-warning': deadButton}" ng-click="changeDead()" onclick="refreshDead()" value="Deadlift">
+					<span>
+				</td>
+				<td>
+					<input type="button" onclick="addSet();addRecord();addChallenges();addStats();" ng-click="refresh();changeTotals()" value="Add">
+					<span id="response">{{exercise}} {{weight}} x {{reps}}</span>
+				</td>
+			</tr>
+			<tr>
+				<td id="points">Level <span class="sick">{{xlevel}}</span>: <span class="sick">{{xcurrent}}</span> / <span class="sick">{{xtotal}}</span> Gains</td>
+				<td>
+					
+					<span id="response2"></span>
+					<span id="response3"></span>
+					<span id="response4"></span>
+				</td>
+			</tr>
+		</table>
+
 		<div id="myProgress">
-  			<div id="myBar" ng-style="{width : progress};">{{progress}}</div>
+  			<div id="myBar" ng-style="{width : progress};"></div>
 		</div>
-		<hr>
-	
-		<input type="button" ng-class="{'btn-warning': benchButton}" ng-click="changeBench()" onclick="refreshBench()" value="Bench">
-		<input type="button" ng-class="{'btn-warning': squatButton}" ng-click="changeSquat()" onclick="refreshSquat()" value="Squat">
-		<input type="button" ng-class="{'btn-warning': deadButton}" ng-click="changeDead()" onclick="refreshDead()" value="Deadlift">
-
-		<hr>
-
-		<div>
-			<h2>Enter Set</h2>
-			<p>Weight: <input id="weight" type="text" value="100" ng-model="weight">{{weight}}</p>
-			<p>Reps: <input id="reps" type="text" value="10" ng-model="reps">{{reps}}</p>
-			<input type="button" onclick="addSet();addRecord();addChallenges();addStats();" ng-click="refresh();changeTotals()" value="Add">
-			<p id="response"></p>
-			<p id="response2"></p>
-			<p id="response3"></p>
-			<p id="response4"></p>
-		</div>
-		<hr>
 		
 		<div class="tabs">
 
@@ -238,33 +252,65 @@
 			    <div class="tab-panel" id="table-wrapper">
 					<div class="tab-content">
 						<table class="table">
-							<tr class="odd">
+							<caption class="odd">{{exercise}}</caption>
+							<tr class="even">
 								<th>Gains</th>
 								<td>{{sgains}}</td>	
 							</tr>
-							<tr class="even">
+							<tr class="odd">
 								<th>Records</th>
 								<td>{{srecords}}</td>	
 							</tr>
-							<tr class="odd">
+							<tr class="even">
 								<th>Challenges</th>
 								<td>{{schallenges}}</td>
 							</tr>
-							<tr class="even">
+							<tr class="odd">
 								<th>Sets</th>
 								<td>{{ssets}}</td>
 							</tr>
-							<tr class="odd">
+							<tr class="even">
 								<th>Reps</th>
 								<td>{{sreps}}</td>
 							</tr>
-							<tr class="even">
-								<th>Weight</th>
-								<td>{{sweight}} pounds</td>
-							</tr>
 							<tr class="odd">
+								<th>Pounds</th>
+								<td>{{sweight}}</td>
+							</tr>
+							<tr class="even">
 								<th>1RM</th>
 								<td>{{soneRM}}</td>
+							</tr>
+						</table>
+						<table class="table">
+							<caption class="odd">Totals</caption>
+							<tr class="even">
+								<th>Gains</th>
+								<td>{{xgains}}</td>	
+							</tr>
+							<tr class="odd">
+								<th>Records</th>
+								<td>{{xrecords}}</td>	
+							</tr>
+							<tr class="even">
+								<th>Challenges</th>
+								<td>{{xchallenges}}</td>
+							</tr>
+							<tr class="odd">
+								<th>Sets</th>
+								<td>{{xsets}}</td>
+							</tr>
+							<tr class="even">
+								<th>Reps</th>
+								<td>{{xreps}}</td>
+							</tr>
+							<tr class="odd">
+								<th>Pounds</th>
+								<td>{{xweight}}</td>
+							</tr>
+							<tr class="even">
+								<th>1RM</th>
+								<td>{{xoneRM}}</td>
 							</tr>
 						</table>
 					</div>
