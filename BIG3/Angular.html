@@ -8,10 +8,10 @@
 	<div ng-controller="buttons">
 		<table id="header">
 			<tr>
-				<td colspan="3" rowspan="3">
+				<td rowspan="3">
 					<img src="Drive.jpg" style="width: 150px; height: 150px">
 				</td>
-				<td>
+				<td >
 					<span id="bigboi">TH<span class="sick">3</span> BIG THR<span class="sick">33</span></span>
 				</td>
 				<td>
@@ -20,8 +20,8 @@
 					
 				</td>
 			</tr>
-			<tr>	
-				<td>
+			<tr >	
+				<td >
 					<span >
 					<input class ="butt" type="button" ng-class="{'btn-warning': benchButton}" ng-click="changeBench()" onclick="refreshBench()" value="Bench"> ---
 					<input class ="butt" type="button" ng-class="{'btn-warning': squatButton}" ng-click="changeSquat()" onclick="refreshSquat()" value="Squat"> ---
@@ -108,8 +108,8 @@
 								</div>
 							</div>
 						</div>
-						<fusioncharts type="column2d" datasource="{{myDataSource3}}">
-						</fusioncharts>
+							<fusioncharts class="bro" type="column2d" datasource="{{myDataSource3}}">
+							</fusioncharts>						
 					</div>
 				</div>
 			</div>
@@ -151,7 +151,7 @@
 								<td >{{x.records}}</td>
 							</tr>
 						</table>
-						<div class="graphs">
+						<div class="stuff">
 							<fusioncharts type="column2d" datasource="{{myDataSource}}">
 							</fusioncharts>
 							<div>
@@ -201,8 +201,8 @@
 								<td >{{x.records}}</td>
 							</tr>
 						</table>
-						<div class="graphs">
-							<fusioncharts type="column2d" datasource="{{myDataSource2}}">
+						<div class="stuff">
+							<fusioncharts class="graphs" type="column2d" datasource="{{myDataSource2}}">
 							</fusioncharts>
 							<div>
 								<input type="button" ng-class="{'btn-warning': weightButton}" ng-click="weightPumps()" value="Reps">
@@ -252,7 +252,7 @@
 			    <div class="tab-panel" id="table-wrapper">
 					<div class="tab-content">
 						<table class="table">
-							<caption class="odd">{{exercise}}</caption>
+							<caption class="odd" style="font-weight:bold;font-size:20px">{{exercise}}</caption>
 							<tr class="even">
 								<th>Gains</th>
 								<td>{{sgains}}</td>	
@@ -281,9 +281,9 @@
 								<th>1RM</th>
 								<td>{{soneRM}}</td>
 							</tr>
-						</table>
-						<table class="table">
-							<caption class="odd">Totals</caption>
+							<tr>
+								<th colspan="2" class="odd" style="font-weight:bold;font-size:20px">Totals</th>
+							</tr>
 							<tr class="even">
 								<th>Gains</th>
 								<td>{{xgains}}</td>	
@@ -313,6 +313,14 @@
 								<td>{{xoneRM}}</td>
 							</tr>
 						</table>
+						<div class="stuff">
+							<fusioncharts type="pie2d" datasource="{{myDataSource4}}">
+							</fusioncharts>
+							<div >
+								<input type="button" ng-class="{'btn-warning': oneRMPieButton}" ng-click="oneRMPie()" value="1RM">
+								<input type="button" ng-class="{'btn-warning': gainsPieButton}" ng-click="gainsPie()" value="Gains">
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>

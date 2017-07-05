@@ -1,10 +1,10 @@
 app.controller('buttons', function($scope) {
 	$scope.benchButton = true;
-	$scope.squatButton = false;
-	$scope.deadButton = false;
+
+
 	$scope.weightButton = true;
-	$scope.oneRMButton = false;
-	$scope.recordsButton = false;
+
+	$scope.oneRMPieButton = true;
 
 	$scope.myDataSource = {
 	    chart: {
@@ -64,6 +64,19 @@ app.controller('buttons', function($scope) {
 	    ],
 	};
 
+	$scope.myDataSource4 = {
+	    chart: {
+	        caption: "One Rep Max",
+	        subCaption: "Total: " + stats[0].oneRM,
+	    },
+
+	    data: [
+	    	{label: "Bench", value: stats[1].oneRM},
+	    	{label: "Squat", value: stats[2].oneRM},
+	    	{label: "Deadlift", value: stats[3].oneRM}
+	    ],
+	};
+
 	$scope.changeTotals = function(){
 		$scope.xrecords = stats[0].records;
 		$scope.xreps = stats[0].reps;
@@ -86,9 +99,9 @@ app.controller('buttons', function($scope) {
 		} else if (exercise == "Deadlift"){
 			$scope.changeDead();
 		}
+		$scope.oneRMPie();
 		$scope.weightStacks();
 		$scope.weightPumps();
-		$scope.history();
 	}
 
 	$scope.changeBench = function(){
@@ -112,7 +125,10 @@ app.controller('buttons', function($scope) {
 		$scope.orderByField4 = 'num';
  		$scope.reverseSort = true;
  		$scope.reverseSort2 = false;
- 		$scope.exercise = exercise;	
+ 		$scope.exercise = exercise;
+ 		$scope.history();
+ 		$scope.weightStacks();
+ 		$scope.weightPumps();	
 	}
 	$scope.changeSquat = function(){
 		$scope.squatButton = true;
@@ -135,7 +151,10 @@ app.controller('buttons', function($scope) {
 		$scope.orderByField4 = 'num';
  		$scope.reverseSort = true;
  		$scope.reverseSort2 = false;
- 		$scope.exercise = exercise; 		
+ 		$scope.exercise = exercise;
+ 		$scope.history(); 	
+ 		$scope.weightStacks();
+ 		$scope.weightPumps();	
 	}
 	$scope.changeDead = function(){
 		$scope.deadButton = true;
@@ -159,6 +178,9 @@ app.controller('buttons', function($scope) {
  		$scope.reverseSort = true;
  		$scope.reverseSort2 = false;
  		$scope.exercise = exercise;
+ 		$scope.history();
+ 		$scope.weightStacks();
+ 		$scope.weightPumps();
 	}
 	$scope.weightStacks = function(){
 		$scope.weightButton = true;
@@ -174,7 +196,7 @@ app.controller('buttons', function($scope) {
 		    	$scope.myDataSource.data[j].label = stacksSquat[i].reps.toString();
 		    	$scope.myDataSource.data[j].value = stacksSquat[i].weight;
 		    }
-	    } else if (exercise == "deadlift"){
+	    } else if (exercise == "Deadlift"){
 	    	for (i = 0, j=9; i<stacksDead.length; i++, j--){
 		    	$scope.myDataSource.data[j].label = stacksDead[i].reps.toString();
 		    	$scope.myDataSource.data[j].value = stacksDead[i].weight;
@@ -195,7 +217,7 @@ app.controller('buttons', function($scope) {
 		    	$scope.myDataSource2.data[j].label = pumpsSquat[i].weight.toString();
 		    	$scope.myDataSource2.data[j].value = pumpsSquat[i].reps;
 			}
-	    } else if (exercise == "deadlift"){
+	    } else if (exercise == "Deadlift"){
 			for (i = 0, j=9; i<pumpsDead.length; i++, j--){
 		    	$scope.myDataSource2.data[j].label = pumpsDead[i].weight.toString();
 		    	$scope.myDataSource2.data[j].value = pumpsDead[i].reps;
@@ -216,7 +238,7 @@ app.controller('buttons', function($scope) {
 		    	$scope.myDataSource.data[j].label = stacksSquat[i].reps.toString();
 		    	$scope.myDataSource.data[j].value = stacksSquat[i].oneRM;
 		    }
-	    } else if (exercise == "deadlift"){
+	    } else if (exercise == "Deadlift"){
 	    	for (i = 0, j=9; i<stacksDead.length; i++, j--){
 		    	$scope.myDataSource.data[j].label = stacksDead[i].reps.toString();
 		    	$scope.myDataSource.data[j].value = stacksDead[i].oneRM;
@@ -237,7 +259,7 @@ app.controller('buttons', function($scope) {
 		    	$scope.myDataSource2.data[j].label = pumpsSquat[i].weight.toString();
 		    	$scope.myDataSource2.data[j].value = pumpsSquat[i].oneRM;
 			}
-	    } else if (exercise == "deadlift"){
+	    } else if (exercise == "Deadlift"){
 			for (i = 0, j=9; i<pumpsDead.length; i++, j--){
 		    	$scope.myDataSource2.data[j].label = pumpsDead[i].weight.toString();
 		    	$scope.myDataSource2.data[j].value = pumpsDead[i].oneRM;
@@ -258,7 +280,7 @@ app.controller('buttons', function($scope) {
 		    	$scope.myDataSource.data[j].label = stacksSquat[i].reps.toString();
 		    	$scope.myDataSource.data[j].value = stacksSquat[i].records;
 		    }
-	    } else if (exercise == "deadlift"){
+	    } else if (exercise == "Deadlift"){
 	    	for (i = 0, j=9; i<stacksDead.length; i++, j--){
 		    	$scope.myDataSource.data[j].label = stacksDead[i].reps.toString();
 		    	$scope.myDataSource.data[j].value = stacksDead[i].records;
@@ -279,7 +301,7 @@ app.controller('buttons', function($scope) {
 		    	$scope.myDataSource2.data[j].label = pumpsSquat[i].weight.toString();
 		    	$scope.myDataSource2.data[j].value = pumpsSquat[i].records;
 			}
-	    } else if (exercise == "deadlift"){
+	    } else if (exercise == "Deadlift"){
 			for (i = 0, j=9; i<pumpsDead.length; i++, j--){
 		    	$scope.myDataSource2.data[j].label = pumpsDead[i].weight.toString();
 		    	$scope.myDataSource2.data[j].value = pumpsDead[i].records;
@@ -287,11 +309,45 @@ app.controller('buttons', function($scope) {
 	    }
 	}
 	$scope.history = function(){
-		var arr = benchHist.slice(-10)
-		for (i=0; i < 10; i++){
-			$scope.myDataSource3.data[i].label = arr[i].weight.toString() + "x" + arr[i].reps.toString();
-		    $scope.myDataSource3.data[i].value = arr[i].oneRM;
-		}	
+		var arr = [];
+		if (exercise == "Bench"){
+			arr = benchHist.slice(-10)
+			for (i=0; i < 10; i++){
+				$scope.myDataSource3.data[i].label = arr[i].weight.toString() + "x" + arr[i].reps.toString();
+			    $scope.myDataSource3.data[i].value = arr[i].oneRM;
+			}
+		} else if (exercise == "Squat"){
+			arr = squatHist.slice(-10)
+			for (i=0; i < 10; i++){
+				$scope.myDataSource3.data[i].label = arr[i].weight.toString() + "x" + arr[i].reps.toString();
+			    $scope.myDataSource3.data[i].value = arr[i].oneRM;
+			}
+		} else if (exercise == "Deadlift"){
+			arr = deadHist.slice(-10)
+			for (i=0; i < 10; i++){
+				$scope.myDataSource3.data[i].label = arr[i].weight.toString() + "x" + arr[i].reps.toString();
+			    $scope.myDataSource3.data[i].value = arr[i].oneRM;
+			}
+		}
+			
+	}
+	$scope.oneRMPie = function(){
+		$scope.oneRMPieButton = true;
+		$scope.gainsPieButton = false;
+		$scope.myDataSource4.chart.caption = "One Rep Max";
+		$scope.myDataSource4.chart.subCaption = "Total: " + stats[0].oneRM;
+		$scope.myDataSource4.data[0].value = stats[1].oneRM;
+		$scope.myDataSource4.data[1].value = stats[2].oneRM;
+		$scope.myDataSource4.data[2].value = stats[3].oneRM;
+	}
+	$scope.gainsPie = function(){
+		$scope.oneRMPieButton = false;
+		$scope.gainsPieButton = true;
+		$scope.myDataSource4.chart.caption = "Gains";
+		$scope.myDataSource4.chart.subCaption = "Total: " + stats[0].gains;
+		$scope.myDataSource4.data[0].value = stats[1].gains;
+		$scope.myDataSource4.data[1].value = stats[2].gains;
+		$scope.myDataSource4.data[2].value = stats[3].gains;
 	}
 	$scope.history();
 	$scope.changeBench();

@@ -71,7 +71,7 @@ function challengeCompleted(chal){
 			thisSetGains = thisSetGains + 5000;
 			stats[0].challenges++;
 			stats[1].challenges++;
-			localStorage.setItem("benchChallenges", JSON.stringify(benchChallenges));
+			localStorage.setItem("bbChallenges", JSON.stringify(benchChallenges));
 		}
 		
 	}else if (exercise == "Squat"){
@@ -82,7 +82,7 @@ function challengeCompleted(chal){
 			thisSetGains = thisSetGains + 5000;
 			stats[0].challenges++;
 			stats[2].challenges++;
-			localStorage.setItem("squatChallenges", JSON.stringify(squatChallenges));
+			localStorage.setItem("ssChallenges", JSON.stringify(squatChallenges));
 		}
 	}else if (exercise == "Deadlift"){
 		var arr = deadArrayReps.slice(-y);
@@ -92,10 +92,10 @@ function challengeCompleted(chal){
 			thisSetGains = thisSetGains + 5000;
 			stats[0].challenges++;
 			stats[3].challenges++;
-			localStorage.setItem("deadChallenges", JSON.stringify(deadChallenges));
+			localStorage.setItem("ddChallenges", JSON.stringify(deadChallenges));
 		}
 	}
-	localStorage.setItem("newStats", JSON.stringify(stats));
+	localStorage.setItem("nnnStats", JSON.stringify(stats));
 }
 
 function actuallyCompleted(arr, x) {
